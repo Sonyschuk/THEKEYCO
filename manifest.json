@@ -2,26 +2,27 @@
   "name": "Intentional Bingo — The Key Co.",
   "short_name": "The Key Co.",
   "description": "Your monthly intentional habit board by The Key Co.",
-  "start_url": "/intentional-bingo/index.html",
+  "start_url": "/THEKEYCO/index.html",
+  "scope": "/THEKEYCO/",
   "display": "standalone",
-  "background_color": "#1C1A14",
-  "theme_color": "#C9A84C",
+  "background_color": "#F7F3EE",
+  "theme_color": "#3D5A56",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "/THEKEYCO/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "/THEKEYCO/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "apple-touch-icon.png",
+      "src": "/THEKEYCO/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }
