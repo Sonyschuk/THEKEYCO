@@ -17,14 +17,6 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233D5A56'/><text y='.9em' font-size='70' x='12'>🗝</text></svg>">
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233D5A56'/><text y='.9em' font-size='70' x='12'>🗝</text></svg>">
 
-<!-- ─── YOUR ANTHROPIC API KEY ─────────────────────────────────────────────
-     1. Get a key at console.anthropic.com
-     2. Replace YOUR_API_KEY_HERE below with your actual key
-     3. This is fine for personal demo use — don't share the file publicly
-     ──────────────────────────────────────────────────────────────────── -->
-<script>
-  const ANTHROPIC_API_KEY = 'YOUR_API_KEY_HERE';
-</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -650,43 +642,74 @@ function switchMonth(val) {
   updateStats(); renderGrid(); updateDot();
 }
 
-// ── AI PROMPT ─────────────────────────────────────────────────────────────────
-async function genPrompt(tileText, pillarName, isBingo, bingoLine) {
-  if (!ANTHROPIC_API_KEY || ANTHROPIC_API_KEY === 'YOUR_API_KEY_HERE') {
-    return isBingo
-      ? "What did completing this row unlock in you?"
-      : `What did "${tileText}" teach you about yourself today?`;
-  }
-  const msg = isBingo
-    ? `The user completed a bingo row in their Intentional Bingo habit app. Row tiles: "${bingoLine}". Write one warm reflection question (max 20 words, one sentence) inviting them to reflect on what this row meant. Thoughtful life coach voice. Just the question.`
-    : `The user completed the habit tile "${tileText}" in the ${pillarName} pillar of Intentional Bingo. Write one warm personal reflection question (max 20 words, one sentence) inviting them to go deeper on what they felt. Thoughtful life coach voice. Just the question.`;
-  try {
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true',
-      },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 80,
-        system: "You write short warm personal reflection questions for a woman using a habit-building app called Intentional Bingo by The Key Co. Always one sentence ending with a question mark. Human and warm, never corporate.",
-        messages: [{ role: 'user', content: msg }]
-      })
-    });
-    const d = await r.json();
-    return d.content?.[0]?.text?.trim() || null;
-  } catch(e) { return null; }
+// ── PROMPT BANKS (per pillar + bingo + board) ─────────────────────────────────
+const PROMPTS = {
+  0: [ // Notice
+    "What did your body feel like today — and what was it trying to tell you?",
+    "What gave you a flicker of energy today, even something tiny?",
+    "What were you tolerating today that quietly drained you?",
+    "Where did you feel most like yourself today?",
+    "What did you notice about yourself that surprised you?",
+    "What moment today deserved more of your attention than it got?",
+  ],
+  1: [ // Uncover
+    "What have you been quietly setting aside that deserves a closer look?",
+    "What would the fiercest version of you have done differently today?",
+    "What story about yourself are you ready to stop telling?",
+    "What do you keep almost saying — but don't?",
+    "What did today reveal about what you actually want?",
+    "What part of yourself showed up today that you usually keep hidden?",
+  ],
+  2: [ // Imagine
+    "If this next chapter had a title, what would it be?",
+    "What does your ideal life feel like in your body — not just on paper?",
+    "What would you do first if you knew you couldn't fail?",
+    "What image or feeling keeps coming back when you dream about your future?",
+    "What does 'enough' look like for you — really?",
+    "Describe one small moment from your imagined future self's Tuesday morning.",
+  ],
+  3: [ // Build
+    "What small thing did you do today that was braver than it looked?",
+    "What did you learn about yourself from taking that step?",
+    "What boundary did you hold — or wish you had?",
+    "What are you building right now, even if no one else can see it yet?",
+    "What habit, if you kept it for 30 days, would change everything?",
+    "What did you do today that your future self will thank you for?",
+  ],
+  bingo: [
+    "This row is complete — what does finishing it say about who you're becoming?",
+    "What did the tiles in this row have in common, beneath the surface?",
+    "Which tile in this row pushed you the most, and what did it teach you?",
+    "What shifted in you as you worked through this row?",
+    "Completing a row takes consistency — where else in your life does that show up?",
+    "What would you tell a friend who just completed what you completed?",
+  ],
+  board: [
+    "You finished the whole board. What does that feel like, honestly?",
+    "What was the hardest tile this month — and what made you do it anyway?",
+    "What version of yourself showed up this month that you want to keep?",
+    "What did this month's board teach you about what you're truly capable of?",
+    "If this month had a lesson, what would it be?",
+    "What do you want next month's board to feel like — and who do you need to be to get there?",
+  ],
+};
+
+function pickPrompt(pillar, type) {
+  let bank;
+  if (type === 'bingo') bank = PROMPTS.bingo;
+  else if (type === 'board') bank = PROMPTS.board;
+  else bank = PROMPTS[pillar] || PROMPTS[0];
+  return bank[Math.floor(Math.random() * bank.length)];
 }
 
 // ── JOURNAL QUEUE ─────────────────────────────────────────────────────────────
-async function addToQueue(type, tileIdx, lineIdxs) {
+function addToQueue(type, tileIdx, lineIdxs) {
   const tile = tileIdx >= 0 ? state.tiles[tileIdx] : null;
+  const pillar = tile && tile.p >= 0 ? tile.p : 0;
   const item = {
     id: Date.now() + Math.random(), type, tileIdx, lineIdxs,
-    loading: true, prompt: null,
+    loading: false,
+    prompt: pickPrompt(pillar, type),
     color: tile && tile.p >= 0 ? PC[tile.p] : '#3D5A56',
     accent: tile && tile.p >= 0 ? PA[tile.p] : '#C8DDD9',
     tag: tile && tile.p >= 0 ? PN[tile.p] : (type === 'bingo' ? 'Row Win' : 'Board'),
@@ -695,17 +718,6 @@ async function addToQueue(type, tileIdx, lineIdxs) {
   journalQueue.push(item);
   updateDot();
   if (document.getElementById('journalView').classList.contains('on')) renderQueue();
-
-  const isBingo = type === 'bingo';
-  const bingoLine = isBingo && lineIdxs ? lineIdxs.map(i => state.tiles[i].text).join(', ') : '';
-  const pillar = tile && tile.p >= 0 ? PN[tile.p] : 'General';
-  const prompt = await genPrompt(item.tileText, pillar, isBingo, bingoLine);
-  const qi = journalQueue.findIndex(q => q.id === item.id);
-  if (qi >= 0) {
-    journalQueue[qi].loading = false;
-    journalQueue[qi].prompt = prompt || (isBingo ? "What did completing this row unlock in you?" : `What did "${item.tileText}" teach you today?`);
-    if (document.getElementById('journalView').classList.contains('on')) renderQueue();
-  }
 }
 
 function updateDot() {
@@ -725,7 +737,7 @@ function renderQueue() {
       </div>
       <div class="j-card" style="--accent:${item.color}">
         <div class="j-tag" style="color:${item.color}">${item.tag} — ${item.tileText.replace('🗝 ', '')}</div>
-        <div class="j-prompt">${item.loading ? '<span class="j-loading">Generating your reflection question…</span>' : (item.prompt || '')}</div>
+        <div class="j-prompt">${item.prompt || ''}</div>
         <textarea class="j-ta" id="qTA" placeholder="Write freely… this is your space."></textarea>
         <div class="j-cfooter">
           <button class="j-skip" onclick="skipQ()">Skip for now</button>
