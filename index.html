@@ -155,10 +155,10 @@
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(36px, 6vw, 58px);
-    font-weight: 300;
+    font-weight: 600;
     color: var(--text);
     line-height: 1.1;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
 
   .hero-title em {
@@ -168,8 +168,8 @@
 
   .hero-sub {
     font-size: 13px;
-    font-weight: 300;
-    color: var(--text-soft);
+    font-weight: 500;
+    color: var(--text-mid);
     letter-spacing: 0.15em;
     text-transform: uppercase;
     margin-top: 10px;
@@ -184,7 +184,7 @@
     display: flex;
     justify-content: space-between;
     font-size: 11px;
-    color: var(--text-soft);
+    color: var(--text-mid);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 6px;
@@ -217,8 +217,8 @@
   .btn {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 9px 18px;
     border-radius: 24px;
@@ -229,8 +229,8 @@
 
   .btn-ghost {
     background: transparent;
-    color: var(--text-mid);
-    border: 1px solid var(--border);
+    color: var(--text);
+    border: 1.5px solid var(--border);
   }
 
   .btn-ghost:hover {
@@ -266,24 +266,24 @@
   }
 
   .pillar-tab {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 6px 14px;
+    padding: 7px 15px;
     border-radius: 16px;
-    border: 1px solid transparent;
+    border: 1.5px solid transparent;
     cursor: pointer;
     transition: all 0.2s ease;
     background: transparent;
-    color: var(--text-mid);
+    color: var(--text);
   }
 
-  .pillar-tab[data-pillar="0"] { border-color: var(--pillar-0-bd); }
-  .pillar-tab[data-pillar="1"] { border-color: var(--pillar-1-bd); }
-  .pillar-tab[data-pillar="2"] { border-color: var(--pillar-2-bd); }
-  .pillar-tab[data-pillar="3"] { border-color: var(--pillar-3-bd); }
-  .pillar-tab[data-pillar="all"] { border-color: var(--teal-pale); }
+  .pillar-tab[data-pillar="0"] { border-color: var(--pillar-0); }
+  .pillar-tab[data-pillar="1"] { border-color: var(--pillar-1); }
+  .pillar-tab[data-pillar="2"] { border-color: var(--pillar-2); }
+  .pillar-tab[data-pillar="3"] { border-color: var(--pillar-3); }
+  .pillar-tab[data-pillar="all"] { border-color: var(--teal); }
 
   .pillar-tab.active[data-pillar="0"] { background: var(--pillar-0-bg); color: var(--pillar-0); border-color: var(--pillar-0-bd); }
   .pillar-tab.active[data-pillar="1"] { background: var(--pillar-1-bg); color: var(--pillar-1); border-color: var(--pillar-1-bd); }
@@ -659,14 +659,14 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 32px;
     font-weight: 600;
-    color: var(--teal-mid);
+    color: var(--teal);
     line-height: 1;
   }
 
   .streak-label {
     font-size: 10px;
-    font-weight: 400;
-    color: var(--text-mid);
+    font-weight: 600;
+    color: var(--text);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-top: 4px;
@@ -908,14 +908,14 @@
 
   .view-tab {
     font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     padding: 8px 20px;
     border-radius: 20px;
     border: none;
     background: transparent;
-    color: var(--text-mid);
+    color: var(--text);
     cursor: pointer;
     transition: all 0.2s ease;
     font-family: 'DM Sans', sans-serif;
