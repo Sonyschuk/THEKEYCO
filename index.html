@@ -777,6 +777,232 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+
+  /* ── PLAN MONTH MODAL ──────────────────────────────────────────────────── */
+  .btn-plan {
+    background: var(--teal);
+    color: var(--bg);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 9px 20px;
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-plan:hover { background: var(--teal-mid); transform: translateY(-1px); }
+
+  .plan-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(247,243,238,0.96);
+    backdrop-filter: blur(8px);
+    z-index: 250;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    overflow: hidden;
+  }
+  .plan-overlay.open { opacity: 1; pointer-events: all; }
+
+  .plan-header {
+    padding: 20px 28px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    background: var(--bg);
+  }
+  .plan-header-left {}
+  .plan-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .plan-subtitle {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-soft);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  .plan-header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .plan-close {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--text-mid);
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+  }
+  .plan-close:hover { color: var(--teal); }
+
+  .plan-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 28px 40px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .plan-pillar-section {
+    margin-bottom: 36px;
+  }
+
+  .plan-pillar-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .plan-pillar-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .plan-pillar-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: italic;
+    opacity: 0.7;
+  }
+  .plan-pillar-desc {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+    font-style: italic;
+    padding-left: 2px;
+  }
+  .plan-pillar-divider {
+    height: 1.5px;
+    border-radius: 1px;
+    margin-bottom: 14px;
+  }
+
+  .plan-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .plan-row-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .plan-activity-select {
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 9px 12px;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%233D5A56'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+    transition: border-color 0.2s;
+  }
+  .plan-activity-select:focus { border-color: var(--teal-light); }
+
+  .plan-activity-input {
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .plan-activity-input:focus { border-color: var(--teal-light); }
+  .plan-activity-input::placeholder { color: var(--text-soft); font-style: italic; }
+
+  .plan-times {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .plan-times-label {
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--text-soft);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .plan-times-select {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--teal);
+    background: var(--teal-wash);
+    border: 1.5px solid var(--teal-pale);
+    border-radius: 8px;
+    padding: 6px 8px;
+    width: 52px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .plan-row-num {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-soft);
+    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+  }
+
+  .plan-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 480px) {
+    .plan-header { padding: 14px 16px 12px; }
+    .plan-body { padding: 16px 16px 32px; }
+    .plan-footer { padding: 12px 16px; }
+    .plan-title { font-size: 22px; }
+    .plan-pillar-name { font-size: 22px; }
+    .plan-activity-select { font-size: 12px; padding: 8px 28px 8px 10px; }
+    .plan-row { gap: 8px; }
+  }
+
   /* ── RESPONSIVE ─────────────────────────────────────────────────────────── */
 
   /* Tablet (max 768px) */
@@ -970,6 +1196,7 @@
 
     <!-- CONTROLS -->
     <div class="controls">
+      <button class="btn btn-plan" onclick="openPlanMonth()">🗝 Plan My Month</button>
       <button class="btn btn-ghost" id="editBtn" onclick="toggleEdit()">✏️ Edit Board</button>
       <button class="btn btn-ghost" onclick="resetMonth()">↺ Reset Month</button>
       <button class="btn btn-ghost" onclick="exportData()">Export</button>
@@ -1034,6 +1261,28 @@
   </div>
 
 </main>
+
+
+<!-- PLAN MY MONTH MODAL -->
+<div class="plan-overlay" id="planOverlay">
+  <div class="plan-header">
+    <div class="plan-header-left">
+      <div class="plan-title">Plan My Month</div>
+      <div class="plan-subtitle" id="planMonthLabel">Your board for this month</div>
+    </div>
+    <div class="plan-header-actions">
+      <button class="btn btn-plan" onclick="savePlanMonth()" style="font-size:11px;padding:8px 16px;">Save Board ✓</button>
+      <button class="plan-close" onclick="closePlanMonth()">✕</button>
+    </div>
+  </div>
+  <div class="plan-body" id="planBody">
+    <!-- Rendered by JS -->
+  </div>
+  <div class="plan-footer">
+    <button class="btn btn-ghost" onclick="closePlanMonth()">Cancel</button>
+    <button class="btn btn-plan" onclick="savePlanMonth()">Save & Close ✓</button>
+  </div>
+</div>
 
 <!-- IMPORT MODAL -->
 <div class="modal-overlay" id="importModal">
@@ -1549,6 +1798,367 @@ document.getElementById('importModal').addEventListener('click', e => {
 document.getElementById('entryModal').addEventListener('click', e => {
   if (e.target === document.getElementById('entryModal')) closeEntryModal();
 });
+
+
+// ── ACTIVITY LIBRARY ─────────────────────────────────────────────────────────
+
+const ACTIVITY_LIBRARY = [
+  // Tune-In (pillar 0)
+  [
+    "Morning energy check-in",
+    "Notice what drains you today",
+    "10-minute screen-free morning",
+    "Write 3 things that lit you up",
+    "Spot one joy in the small things",
+    "Body scan check-in",
+    "Notice your inner voice",
+    "Track your energy through the day",
+    "Gratitude — one paragraph, one thing",
+    "Sit with your coffee — no phone",
+    "Name one joy from childhood",
+    "Notice what you avoid",
+    "Write a letter from your body",
+    "One hour of doing nothing",
+    "Catch a moment of genuine laughter",
+    "The drain audit",
+    "Map your week",
+    "A quiet walk with no destination",
+    "Write down one thing you're proud of",
+    "The midnight thought — write it down",
+  ],
+  // Uncover (pillar 1)
+  [
+    "Journal 5 minutes without judgment",
+    "Name one thing you set aside",
+    "Call someone who challenges you",
+    "Revisit something you once loved",
+    "Write your fierce story",
+    "Write yourself a permission slip",
+    "Explore your unfinished business",
+    "Examine your comparison trap",
+    "Write a letter to younger you",
+    "Name the roles you play",
+    "List what you're tolerating",
+    "Write the truth about your last decade",
+    "Question one long-held belief",
+    "Who were you before you were responsible?",
+    "Write the things you've been meaning to say",
+    "Name your edge",
+    "What do you actually believe?",
+    "The 'supposed to' audit",
+    "Write about your most courageous moment",
+    "What part of you have you been hiding?",
+  ],
+  // Re-Imagine (pillar 2)
+  [
+    "Dream without limits for 5 minutes",
+    "Plan one beautiful slow morning",
+    "Add one image to your vision board",
+    "Ask: what if I wasn't afraid?",
+    "Write your next chapter's title",
+    "Describe your ideal weekday",
+    "Write your life 3 years from now",
+    "Define what 'enough' looks like",
+    "Try one creative experiment",
+    "Collect 3 words for your next season",
+    "Write a question to your future self",
+    "Dream about what your work could be",
+    "Describe the place that feels like you",
+    "Make a 'someday' list",
+    "Write about your ideal retreat",
+    "Write the conversation you most need",
+    "Design your ideal community",
+    "Answer the legacy question",
+    "Describe your brand or creative vision",
+    "Write a love letter to your future self",
+  ],
+  // Navigate (pillar 3)
+  [
+    "Take one step toward your next chapter",
+    "Set one clear boundary",
+    "Move your body intentionally",
+    "Declutter one space",
+    "Learn something new for 15 minutes",
+    "Cook something nourishing",
+    "Write down one win from today",
+    "Reach out to someone who energizes you",
+    "Do one thing that scares you a little",
+    "Create a morning ritual",
+    "Read 10 pages of something that feeds you",
+    "Schedule the thing you keep postponing",
+    "Audit one habit",
+    "Write your personal operating principles",
+    "Do a financial check-in",
+    "Make one thing beautiful",
+    "Say no to something that depletes you",
+    "Have the conversation you've been avoiding",
+    "Start the project",
+    "Celebrate yourself",
+  ],
+];
+
+const PILLAR_DESCRIPTIONS = [
+  "Before anything can change, you have to see what's actually there. Tune-In is about paying attention with kindness — to what lights you up, what drains you, and what you've been moving too fast to feel.",
+  "Uncover is the pillar of brave self-inquiry. It's about peeling back the layers — the stories you've been telling yourself, the things you set aside, the version of you that's been waiting quietly.",
+  "Re-Imagine is your permission to dream without editing yourself. Before you can build a life you love, you need to be able to picture it. Playful, expansive, unconcerned with logistics.",
+  "Navigate is about intentional momentum — not hustle. The small, consistent actions that quietly compound into a life that looks like you designed it. Every step is a vote for the life you're building.",
+];
+
+const PILLAR_LETTERS = ['T', 'U', 'R', 'N'];
+
+// Which tile indices belong to each pillar (grid positions 0-24, excluding 12=FREE)
+// We assign 5 tiles per pillar from the DEFAULT layout
+const PILLAR_TILE_INDICES = [
+  [0, 1, 2, 3, 4],      // Tune-In
+  [5, 6, 7, 8, 9],      // Uncover
+  [10, 11, 13, 14, 20], // Re-Imagine (skipping 12=FREE)
+  [15, 16, 17, 18, 19], // Navigate
+];
+// Remaining tiles (21,22,23,24) are the "mix" — assign them round-robin
+// Actually let's use all non-free tiles and group by pillar from state
+
+// ── PLAN MONTH OPEN/CLOSE ──────────────────────────────────────────────────
+
+function openPlanMonth() {
+  // Update subtitle
+  const mn = MONTH_NAMES[activeMonth.month];
+  document.getElementById('planMonthLabel').textContent = `Planning ${mn} ${activeMonth.year}`;
+
+  renderPlanBody();
+  document.getElementById('planOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePlanMonth() {
+  document.getElementById('planOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderPlanBody() {
+  const body = document.getElementById('planBody');
+  body.innerHTML = '';
+
+  // Build a working copy: 5 slots per pillar from current state tiles
+  // Group current tiles by pillar (excluding free)
+  const byPillar = [[], [], [], []];
+  state.tiles.forEach((tile, idx) => {
+    if (tile.free || tile.pillar < 0) return;
+    if (tile.pillar >= 0 && tile.pillar <= 3) {
+      byPillar[tile.pillar].push({ idx, tile });
+    }
+  });
+
+  const PILLAR_COLORS_HEX = [
+    getComputedStyle(document.documentElement).getPropertyValue('--pillar-0').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--pillar-1').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--pillar-2').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--pillar-3').trim(),
+  ];
+  const PILLAR_BG_HEX = [
+    getComputedStyle(document.documentElement).getPropertyValue('--pillar-0-bg').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--pillar-1-bg').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--pillar-2-bg').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--pillar-3-bg').trim(),
+  ];
+  const PILLAR_BD_HEX = [
+    getComputedStyle(document.documentElement).getPropertyValue('--pillar-0-bd').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--pillar-1-bd').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--pillar-2-bd').trim(),
+    getComputedStyle(document.documentElement).getPropertyValue('--pillar-3-bd').trim(),
+  ];
+
+  PILLAR_NAMES.forEach((name, pi) => {
+    const section = document.createElement('div');
+    section.className = 'plan-pillar-section';
+
+    // Header
+    const hdr = document.createElement('div');
+    hdr.className = 'plan-pillar-header';
+    hdr.innerHTML = `
+      <span class="plan-pillar-name" style="color:${PILLAR_COLORS_HEX[pi]}">${name}</span>
+      <span class="plan-pillar-letter" style="color:${PILLAR_COLORS_HEX[pi]}">${PILLAR_LETTERS[pi]} in TURN</span>
+    `;
+    section.appendChild(hdr);
+
+    // Divider
+    const div = document.createElement('div');
+    div.className = 'plan-pillar-divider';
+    div.style.background = PILLAR_BD_HEX[pi];
+    section.appendChild(div);
+
+    // Description
+    const desc = document.createElement('div');
+    desc.className = 'plan-pillar-desc';
+    desc.textContent = PILLAR_DESCRIPTIONS[pi];
+    section.appendChild(desc);
+
+    // 5 rows — use existing tiles for this pillar, pad with blanks
+    const existingTiles = byPillar[pi];
+    for (let row = 0; row < 5; row++) {
+      const existing = existingTiles[row] || null;
+      const rowEl = document.createElement('div');
+      rowEl.className = 'plan-row';
+
+      const inner = document.createElement('div');
+      inner.className = 'plan-row-inner';
+
+      // Row number
+      const rowNum = document.createElement('div');
+      rowNum.className = 'plan-row-num';
+      rowNum.textContent = `Activity ${row + 1}`;
+      inner.appendChild(rowNum);
+
+      // Dropdown (activity library for this pillar)
+      const sel = document.createElement('select');
+      sel.className = 'plan-activity-select';
+      sel.dataset.pillar = pi;
+      sel.dataset.row = row;
+      sel.style.borderColor = PILLAR_BD_HEX[pi];
+
+      // Default option
+      const defOpt = document.createElement('option');
+      defOpt.value = '';
+      defOpt.textContent = '— Choose an activity or type your own below —';
+      sel.appendChild(defOpt);
+
+      ACTIVITY_LIBRARY[pi].forEach(act => {
+        const opt = document.createElement('option');
+        opt.value = act;
+        opt.textContent = act;
+        if (existing && existing.tile.text === act) opt.selected = true;
+        sel.appendChild(opt);
+      });
+
+      // Custom option
+      const customOpt = document.createElement('option');
+      customOpt.value = '__custom__';
+      customOpt.textContent = '✏️ Write my own...';
+      sel.appendChild(customOpt);
+
+      inner.appendChild(sel);
+
+      // Custom text input (hidden until "Write my own" selected)
+      const customInput = document.createElement('input');
+      customInput.type = 'text';
+      customInput.className = 'plan-activity-input';
+      customInput.placeholder = 'Describe your own activity...';
+      customInput.dataset.pillar = pi;
+      customInput.dataset.row = row;
+      customInput.style.display = 'none';
+
+      // If existing tile has text not in library, show custom input
+      if (existing && !ACTIVITY_LIBRARY[pi].includes(existing.tile.text) && existing.tile.text) {
+        customInput.value = existing.tile.text;
+        customInput.style.display = 'block';
+        // Select "custom" in dropdown
+        customOpt.selected = true;
+      }
+
+      sel.addEventListener('change', () => {
+        if (sel.value === '__custom__') {
+          customInput.style.display = 'block';
+          customInput.focus();
+        } else {
+          customInput.style.display = 'none';
+          customInput.value = '';
+        }
+      });
+
+      inner.appendChild(customInput);
+      rowEl.appendChild(inner);
+
+      // Times selector
+      const timesWrap = document.createElement('div');
+      timesWrap.className = 'plan-times';
+      const timesLabel = document.createElement('div');
+      timesLabel.className = 'plan-times-label';
+      timesLabel.textContent = 'Times';
+      const timesSel = document.createElement('select');
+      timesSel.className = 'plan-times-select';
+      timesSel.dataset.pillar = pi;
+      timesSel.dataset.row = row;
+      timesSel.style.borderColor = PILLAR_BD_HEX[pi];
+      timesSel.style.color = PILLAR_COLORS_HEX[pi];
+      for (let t = 1; t <= 30; t++) {
+        const o = document.createElement('option');
+        o.value = t; o.textContent = t;
+        if (existing && existing.tile.target === t) o.selected = true;
+        else if (!existing && t === 3) o.selected = true;
+        timesSel.appendChild(o);
+      }
+      timesWrap.appendChild(timesLabel);
+      timesWrap.appendChild(timesSel);
+      rowEl.appendChild(timesWrap);
+
+      section.appendChild(rowEl);
+    }
+
+    body.appendChild(section);
+  });
+}
+
+function savePlanMonth() {
+  // Read all 4 pillars × 5 rows from the plan UI
+  const planned = [[], [], [], []]; // planned[pillar] = [{text, target}]
+
+  for (let pi = 0; pi < 4; pi++) {
+    for (let row = 0; row < 5; row++) {
+      const sel = document.querySelector(`.plan-activity-select[data-pillar="${pi}"][data-row="${row}"]`);
+      const customInput = document.querySelector(`.plan-activity-input[data-pillar="${pi}"][data-row="${row}"]`);
+      const timesSel = document.querySelector(`.plan-times-select[data-pillar="${pi}"][data-row="${row}"]`);
+
+      let text = '';
+      if (sel.value === '__custom__') {
+        text = customInput.value.trim();
+      } else if (sel.value) {
+        text = sel.value;
+      }
+
+      const target = parseInt(timesSel.value) || 3;
+      planned[pi].push({ text, target });
+    }
+  }
+
+  // Now write back to state.tiles
+  // Group current tiles by pillar (excl free), maintain order
+  const byPillar = [[], [], [], []];
+  state.tiles.forEach((tile, idx) => {
+    if (tile.free || tile.pillar < 0) return;
+    if (tile.pillar >= 0 && tile.pillar <= 3) {
+      byPillar[tile.pillar].push(idx);
+    }
+  });
+
+  for (let pi = 0; pi < 4; pi++) {
+    const slots = byPillar[pi]; // tile indices for this pillar
+    planned[pi].forEach((plan, row) => {
+      if (row < slots.length && plan.text) {
+        const tileIdx = slots[row];
+        state.tiles[tileIdx].text = plan.text;
+        state.tiles[tileIdx].target = plan.target;
+        state.tiles[tileIdx].progress = 0; // reset progress for new month plan
+      }
+    });
+  }
+
+  saveState();
+  renderGrid();
+  updateStats();
+  closePlanMonth();
+
+  // Brief celebration
+  const el = document.getElementById('celebration');
+  const msg = document.getElementById('celebMsg');
+  msg.textContent = '🗝 Board planned!';
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1800);
+}
+
+// Close plan overlay on background click
+document.getElementById('planOverlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('planOverlay')) closePlanMonth();
+});
+
 
 // ── SERVICE WORKER ────────────────────────────────────────────────────────────
 if ('serviceWorker' in navigator) {
