@@ -1550,37 +1550,30 @@ const PILLAR_COLORS = ['#C0724E','#3D7A72','#4A5490','#8A6D30'];
 const PILLAR_NAMES = ['Tune-In','Uncover','Re-Imagine','Navigate'];
 
 const DEFAULT_TILES = [
-  // Tune-In (pillar 0)
-  { text: "Morning energy check-in", pillar: 0, target: 3 },
-  { text: "Notice what pulls at your energy today", pillar: 0, target: 1 },
-  { text: "10 min screen-free morning", pillar: 0, target: 5 },
-  { text: "Write 3 things that lit you up", pillar: 0, target: 3 },
-  { text: "Spot one joy in the small things", pillar: 0, target: 5 },
-  // Uncover (pillar 1)
-  { text: "Journal 5 min without judgment", pillar: 1, target: 3 },
-  { text: "Name one thing you set aside", pillar: 1, target: 1 },
-  { text: "Call someone who challenges you", pillar: 1, target: 2 },
-  { text: "Revisit something you once loved", pillar: 1, target: 2 },
-  { text: "Write your fierce story", pillar: 1, target: 1 },
-  // Re-Imagine (pillar 2) — row 3 start
-  { text: "Dream without limits for 5 min", pillar: 2, target: 3 },
-  { text: "Plan one beautiful slow morning", pillar: 2, target: 2 },
-  // FREE — centre spot (index 12)
-  { text: "🗝 The KEY", pillar: -1, target: 1, free: true },
-  { text: "Add one image to your vision board", pillar: 2, target: 2 },
-  { text: "Ask: what would I do if I wasn't afraid?", pillar: 2, target: 1 },
-  // Navigate (pillar 3)
-  { text: "Take one step toward your next chapter", pillar: 3, target: 3 },
-  { text: "Set one clear boundary", pillar: 3, target: 2 },
-  { text: "Move your body intentionally", pillar: 3, target: 5 },
-  { text: "Declutter one space in your home", pillar: 3, target: 2 },
-  { text: "Learn something new for 15 min", pillar: 3, target: 3 },
-  // Mix
-  { text: "Reach out to a friend who energizes you", pillar: 1, target: 2 },
-  { text: "Cook something nourishing", pillar: 3, target: 3 },
+  { text: "No phone for the first hour of the day", pillar: 0, target: 5 },
+  { text: "Morning yoga or stretching", pillar: 0, target: 5 },
   { text: "Sit quietly with your coffee — no phone", pillar: 0, target: 5 },
-  { text: "Write down one win from today", pillar: 3, target: 5 },
-  { text: "Do one thing that scares you a little", pillar: 2, target: 2 },
+  { text: "Identify one moment today that felt genuinely good", pillar: 0, target: 5 },
+  { text: "Take a 20-minute walk with no destination", pillar: 0, target: 3 },
+  { text: "Go for a walk — think about 5 things you used to love", pillar: 1, target: 2 },
+  { text: "Do one thing today that feels like you", pillar: 1, target: 3 },
+  { text: "Call a friend and tell them something great you've never said", pillar: 1, target: 1 },
+  { text: "Say out loud one thing you want but haven't let yourself admit", pillar: 1, target: 1 },
+  { text: "Have one honest conversation you've been putting off", pillar: 1, target: 1 },
+  { text: "Take a different route — what do you see off autopilot?", pillar: 2, target: 2 },
+  { text: "Write about your ideal ordinary Tuesday — two years from now", pillar: 2, target: 1 },
+  { text: "🗝 The KEY", pillar: -1, target: 1, free: true },
+  { text: "Do one thing this week purely for the pleasure of it", pillar: 2, target: 2 },
+  { text: "Say yes to one thing that slightly scares and thrills you", pillar: 2, target: 1 },
+  { text: "Start one thing you've been avoiding", pillar: 3, target: 1 },
+  { text: "Choose one small habit — do it every day this week", pillar: 3, target: 7 },
+  { text: "Move one item from your someday list onto this week's calendar", pillar: 3, target: 1 },
+  { text: "Make one call or send one email you've been putting off", pillar: 3, target: 1 },
+  { text: "Do something your future self will thank you for", pillar: 3, target: 1 },
+  { text: "Spend 10 minutes outside before you start work", pillar: 0, target: 5 },
+  { text: "Cook a meal from your past and eat it slowly", pillar: 1, target: 1 },
+  { text: "Wear something you've been saving — today is special enough", pillar: 2, target: 1 },
+  { text: "Set a boundary — say it out loud or in writing", pillar: 3, target: 1 },
 ];
 
 const PROMPTS = [
@@ -2033,99 +2026,113 @@ document.getElementById('entryModal').addEventListener('click', e => {
 
 
 // ── ACTIVITY LIBRARY ─────────────────────────────────────────────────────────
-
 const ACTIVITY_LIBRARY = [
-  // Tune-In (pillar 0)
   [
-    "Morning energy check-in",
-    "Notice what drains you today",
-    "10-minute screen-free morning",
-    "Write 3 things that lit you up",
-    "Spot one joy in the small things",
-    "Body scan check-in",
-    "Notice your inner voice",
-    "Track your energy through the day",
-    "Gratitude — one paragraph, one thing",
-    "Sit with your coffee — no phone",
-    "Name one joy from childhood",
-    "Notice what you avoid",
-    "Write a letter from your body",
-    "One hour of doing nothing",
-    "Catch a moment of genuine laughter",
-    "The drain audit",
-    "Map your week",
-    "A quiet walk with no destination",
-    "Write down one thing you're proud of",
-    "The midnight thought — write it down",
+    { group: "Body & Physical Awareness", activities: [
+      "No phone for the first hour of the day",
+      "Morning yoga or stretching",
+      "Eat one meal without screens or distractions",
+      "Go to bed before 10pm",
+      "Spend 10 minutes outside before you start work",
+    ]},
+    { group: "Energy & Mood", activities: [
+      "Rate your energy morning and evening (1–10, one word)",
+      "Notice and name your mood three times — no judgment, just label it",
+      "Identify one thing that drained you today",
+      "Identify one moment today that felt genuinely good",
+    ]},
+    { group: "Stillness & Presence", activities: [
+      "Sit quietly with your coffee — no phone",
+      "Take a 20-minute walk with no destination",
+      "Five minutes of just breathing before you get out of bed",
+      "One hour of doing nothing — not thinking, just being",
+    ]},
+    { group: "Connection to Your Surroundings", activities: [
+      "Notice five things of beauty today — write them down",
+      "Cook a meal slowly and with full attention",
+      "Watch a sunrise or sunset without photographing it",
+    ]},
   ],
-  // Uncover (pillar 1)
   [
-    "Journal 5 minutes without judgment",
-    "Name one thing you set aside",
-    "Call someone who challenges you",
-    "Revisit something you once loved",
-    "Write your fierce story",
-    "Write yourself a permission slip",
-    "Explore your unfinished business",
-    "Examine your comparison trap",
-    "Write a letter to younger you",
-    "Name the roles you play",
-    "List what you're tolerating",
-    "Write the truth about your last decade",
-    "Question one long-held belief",
-    "Who were you before you were responsible?",
-    "Write the things you've been meaning to say",
-    "Name your edge",
-    "What do you actually believe?",
-    "The 'supposed to' audit",
-    "Write about your most courageous moment",
-    "What part of you have you been hiding?",
+    { group: "Reconnecting with Your Past Self", activities: [
+      "Go for a walk — think about 5 things you used to love",
+      "Listen to a playlist from a meaningful time in your life",
+      "Find something creative you made years ago — sit with it",
+      "Cook a meal from your past and eat it slowly",
+      "Visit a place that mattered to you — go alone, no agenda",
+    ]},
+    { group: "Honest Self-Inventory", activities: [
+      "Write down three things you've been tolerating — cross one off",
+      "List 5 things you used to love to do — which do you miss most?",
+      "Call someone you haven't spoken to in a while — tell them how you're really feeling",
+      "Do one thing today that feels like you",
+    ]},
+    { group: "Peeling Back the Story", activities: [
+      "Write one belief you've never questioned — argue the opposite for 10 minutes",
+      "Notice every time you say 'I'm fine' today — text yourself the real answer",
+      "Say out loud one thing you want but haven't let yourself admit",
+      "Do one thing today the smaller version of you wouldn't have done",
+    ]},
+    { group: "Brave Conversations", activities: [
+      "Call a friend and tell them something great you've never said",
+      "Have one honest conversation you've been putting off",
+      "Ask someone: 'What do you see in me that I might be missing?'",
+      "Write an unsent letter to someone you need to forgive — read it aloud",
+    ]},
   ],
-  // Re-Imagine (pillar 2)
   [
-    "Dream without limits for 5 minutes",
-    "Plan one beautiful slow morning",
-    "Add one image to your vision board",
-    "Ask: what if I wasn't afraid?",
-    "Write your next chapter's title",
-    "Describe your ideal weekday",
-    "Write your life 3 years from now",
-    "Define what 'enough' looks like",
-    "Try one creative experiment",
-    "Collect 3 words for your next season",
-    "Write a question to your future self",
-    "Dream about what your work could be",
-    "Describe the place that feels like you",
-    "Make a 'someday' list",
-    "Write about your ideal retreat",
-    "Write the conversation you most need",
-    "Design your ideal community",
-    "Answer the legacy question",
-    "Describe your brand or creative vision",
-    "Write a love letter to your future self",
+    { group: "Opening Up Space", activities: [
+      "Spend 30 minutes in a coffee shop you've never been — just observe",
+      "Buy a magazine outside your usual world — read it slowly",
+      "Take a different route — what do you see when you're not on autopilot?",
+      "Spend an afternoon doing something you've never tried — alone",
+      "Go to an art gallery, market, or garden — what catches your attention?",
+    ]},
+    { group: "Dreaming on Paper", activities: [
+      "Write about your ideal ordinary Tuesday — two years from now",
+      "Draw or collage your next chapter — no words, just images and feeling",
+      "Write 10 things you'd do if money weren't a factor — circle one",
+      "Describe what 'enough' looks and feels like for you — be specific",
+    ]},
+    { group: "Expanding Your Vision", activities: [
+      "Watch a documentary about someone living a life different from yours",
+      "Have coffee with someone whose work interests you — ask a brave question",
+      "Find one woman doing something that makes you think 'I want some version of that'",
+      "Write the bio you'd want in 5 years — as if it's already true",
+    ]},
+    { group: "Giving Yourself Permission", activities: [
+      "Do one thing this week purely for the pleasure of it",
+      "Book something you've been 'meaning to do'",
+      "Wear something you've been saving — today is special enough",
+      "Say yes to one thing that slightly scares and slightly thrills you",
+    ]},
   ],
-  // Navigate (pillar 3)
   [
-    "Take one step toward your next chapter",
-    "Set one clear boundary",
-    "Move your body intentionally",
-    "Declutter one space",
-    "Learn something new for 15 minutes",
-    "Cook something nourishing",
-    "Write down one win from today",
-    "Reach out to someone who energizes you",
-    "Do one thing that scares you a little",
-    "Create a morning ritual",
-    "Read 10 pages of something that feeds you",
-    "Schedule the thing you keep postponing",
-    "Audit one habit",
-    "Write your personal operating principles",
-    "Do a financial check-in",
-    "Make one thing beautiful",
-    "Say no to something that depletes you",
-    "Have the conversation you've been avoiding",
-    "Start the project",
-    "Celebrate yourself",
+    { group: "Clearing the Path", activities: [
+      "Spend 30 minutes clearing one physical space that's been bothering you",
+      "Cancel or decline one commitment that's been draining you",
+      "Start one thing you've been avoiding",
+      "Delete or unsubscribe from three things that clutter your attention",
+      "Move one item from your 'someday' list onto this week's calendar",
+    ]},
+    { group: "Building New Habits", activities: [
+      "Choose one small habit and do it every day this week",
+      "Replace one default habit with something that actually serves you",
+      "Set a boundary you've been meaning to set — say it out loud or in writing",
+      "Create a simple morning or evening ritual that belongs only to you",
+    ]},
+    { group: "Taking Real Steps", activities: [
+      "Make one phone call or send one email you've been putting off",
+      "Research something you've been curious about — one focused hour",
+      "Sign up for the class, the trip, the event — the one you keep almost booking",
+      "Tell one person about something you're working toward — make it real",
+    ]},
+    { group: "Investing in Yourself", activities: [
+      "Buy yourself one thing that supports the life you're building — not a treat, an investment",
+      "Spend an hour on your finances — know your numbers, make one decision",
+      "Find a mentor, a coach, a community — take one step toward people who get it",
+      "Do something this week that your future self will thank you for",
+    ]},
   ],
 ];
 
@@ -2316,16 +2323,18 @@ function renderPlanBody() {
         sel.appendChild(grpMine);
       }
 
-      // Curated library group
-      const grpCurated = document.createElement('optgroup');
-      grpCurated.label = '🗝 Key Co. Activities';
-      ACTIVITY_LIBRARY[pi].forEach(act => {
-        const opt = document.createElement('option');
-        opt.value = act; opt.textContent = act;
-        if (existing && existing.tile.text === act) opt.selected = true;
-        grpCurated.appendChild(opt);
+      // Curated library grouped by subcategory
+      ACTIVITY_LIBRARY[pi].forEach(group => {
+        const grp = document.createElement('optgroup');
+        grp.label = group.group;
+        group.activities.forEach(act => {
+          const opt = document.createElement('option');
+          opt.value = act; opt.textContent = act;
+          if (existing && existing.tile.text === act) opt.selected = true;
+          grp.appendChild(opt);
+        });
+        sel.appendChild(grp);
       });
-      sel.appendChild(grpCurated);
 
       // Custom option
       const customOpt = document.createElement('option');
@@ -2494,7 +2503,7 @@ function savePlanMonth() {
       planned[pi].push({ text, target, prompt });
 
       // Save any custom activities to the personal library
-      if (text && !ACTIVITY_LIBRARY[pi].includes(text)) {
+      if (text && !ACTIVITY_LIBRARY[pi].flatMap(g => g.activities).includes(text)) {
         addMyActivity(pi, text);
       }
     }
