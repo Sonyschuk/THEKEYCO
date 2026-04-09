@@ -1,5 +1,5 @@
 // The Key Co. — Intentional Bingo Service Worker
-const CACHE_NAME = 'thekey-bingo-v4';
+const CACHE_NAME = 'thekey-bingo-v5';
 
 const ASSETS = [
   '/THEKEYCO/',
