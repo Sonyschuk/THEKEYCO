@@ -778,6 +778,208 @@
   }
 
 
+
+  /* ── GUIDE / HOW IT WORKS ───────────────────────────────────────────────── */
+  .guide-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid var(--teal-pale);
+    background: var(--teal-wash);
+    color: var(--teal);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .guide-btn:hover { background: var(--teal); color: var(--bg); }
+
+  .guide-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(247,243,238,0.96);
+    backdrop-filter: blur(8px);
+    z-index: 260;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    overflow: hidden;
+  }
+  .guide-overlay.open { opacity: 1; pointer-events: all; }
+
+  .guide-header {
+    padding: 20px 28px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg);
+    flex-shrink: 0;
+  }
+  .guide-header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--teal);
+  }
+  .guide-close {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--text-mid);
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+  }
+  .guide-close:hover { color: var(--teal); }
+
+  .guide-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 28px 28px 48px;
+    max-width: 680px;
+    margin: 0 auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .guide-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--teal-mid);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  .guide-section {
+    margin-bottom: 32px;
+  }
+  .guide-section-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 10px;
+  }
+  .guide-section-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .guide-section-body p { margin-bottom: 10px; }
+  .guide-section-body p:last-child { margin-bottom: 0; }
+
+  .guide-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .guide-pillar {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+  }
+  .guide-pillar-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 24px;
+    text-align: center;
+  }
+  .guide-pillar-content {}
+  .guide-pillar-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .guide-pillar-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-mid);
+  }
+
+  .guide-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .guide-step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .guide-step-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .guide-step-content {}
+  .guide-step-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .guide-step-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-mid);
+  }
+
+  .guide-closing {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--teal-mid);
+    text-align: center;
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 480px) {
+    .guide-header { padding: 14px 16px 12px; }
+    .guide-body { padding: 20px 16px 40px; }
+    .guide-section-body { font-size: 16px; }
+    .guide-pillar-desc { font-size: 14px; }
+    .guide-step-desc { font-size: 14px; }
+  }
+
   /* ── PLAN MONTH MODAL ──────────────────────────────────────────────────── */
   .btn-plan {
     background: var(--teal);
@@ -1372,6 +1574,7 @@
     </div>
   </div>
   <div class="header-right">
+    <button class="guide-btn" onclick="openGuide()" title="How it works">?</button>
     <select class="month-select" id="monthSelect" onchange="switchMonth(this.value)"></select>
   </div>
 </header>
@@ -1471,6 +1674,103 @@
 </main>
 
 
+
+
+<!-- HOW IT WORKS GUIDE -->
+<div class="guide-overlay" id="guideOverlay">
+  <div class="guide-header">
+    <div class="guide-header-title">How It Works</div>
+    <button class="guide-close" onclick="closeGuide()">&#x2715;</button>
+  </div>
+  <div class="guide-body">
+
+    <div class="guide-tagline">
+      A monthly practice for women who are ready to live intentionally &mdash; one small thing at a time.
+    </div>
+
+    <div class="guide-section">
+      <div class="guide-section-title">What is this?</div>
+      <div class="guide-section-body">
+        <p>Intentional Bingo is a monthly habit board built around The Key Co.&rsquo;s TURN framework. Each month you choose 24 small, meaningful activities &mdash; things you actually do &mdash; and track them on your board.</p>
+        <p>The game mechanic is intentional: small wins feel satisfying, and satisfaction builds momentum. This isn&rsquo;t about productivity. It&rsquo;s about designing how you show up in your own life.</p>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <div class="guide-section-title">The TURN Framework</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--text-mid);margin-bottom:14px;line-height:1.6;">Your board is organized around four pillars. Together they spell TURN &mdash; because this is about turning toward the life you actually want.</p>
+      <div class="guide-pillars">
+        <div class="guide-pillar">
+          <div class="guide-pillar-letter" style="color:#C0724E;">T</div>
+          <div class="guide-pillar-content">
+            <div class="guide-pillar-name" style="color:#C0724E;">Tune-In</div>
+            <div class="guide-pillar-desc">Slow down and pay attention to yourself. What lights you up? What drains you? What have you been moving too fast to feel?</div>
+          </div>
+        </div>
+        <div class="guide-pillar">
+          <div class="guide-pillar-letter" style="color:#3D7A72;">U</div>
+          <div class="guide-pillar-content">
+            <div class="guide-pillar-name" style="color:#3D7A72;">Uncover</div>
+            <div class="guide-pillar-desc">Reconnect with who you were before the roles and obligations took over. The real you is still in there.</div>
+          </div>
+        </div>
+        <div class="guide-pillar">
+          <div class="guide-pillar-letter" style="color:#4A5490;">R</div>
+          <div class="guide-pillar-content">
+            <div class="guide-pillar-name" style="color:#4A5490;">Re-Imagine</div>
+            <div class="guide-pillar-desc">Give yourself permission to dream without editing. Before you can build a life you love, you need to be able to picture it.</div>
+          </div>
+        </div>
+        <div class="guide-pillar">
+          <div class="guide-pillar-letter" style="color:#8A6D30;">N</div>
+          <div class="guide-pillar-content">
+            <div class="guide-pillar-name" style="color:#8A6D30;">Navigate</div>
+            <div class="guide-pillar-desc">Take one small, intentional step forward. Not hustle &mdash; momentum. Every action is a vote for the life you&rsquo;re building.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="guide-section">
+      <div class="guide-section-title">How to use the app</div>
+      <div class="guide-steps">
+        <div class="guide-step">
+          <div class="guide-step-num">1</div>
+          <div class="guide-step-content">
+            <div class="guide-step-title">Plan your month</div>
+            <div class="guide-step-desc">Tap <strong>Plan My Month</strong> at the start of each month. Work through each pillar and choose 5 activities that feel right for where you are right now. Pick from the curated lists or write your own. Set how many times you&rsquo;d like to do each one. Optionally add a journal prompt &mdash; a question you&rsquo;ll answer when you complete that tile.</div>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-step-num">2</div>
+          <div class="guide-step-content">
+            <div class="guide-step-title">Track as you go</div>
+            <div class="guide-step-desc">Tap a tile each time you complete the activity. The dots fill in as you go. When all the dots are filled, the tile is complete &mdash; and if you set a journal prompt, it will open automatically for a moment of reflection.</div>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-step-num">3</div>
+          <div class="guide-step-content">
+            <div class="guide-step-title">Reflect in your journal</div>
+            <div class="guide-step-desc">The journal is where the real work happens. It doesn&rsquo;t have to be long &mdash; even one sentence about how something felt is enough. Over time, your journal becomes a record of who you&rsquo;re becoming.</div>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-step-num">4</div>
+          <div class="guide-step-content">
+            <div class="guide-step-title">Come back next month</div>
+            <div class="guide-step-desc">Use the month selector to plan ahead or look back at previous months. Your personal activity library grows as you add your own &mdash; so planning gets faster and more personal over time.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="guide-closing">
+      Your board. Your pace. Your chapter. &#x1F5DD;
+    </div>
+
+  </div>
+</div>
 
 <!-- TILE JOURNAL PROMPT OVERLAY -->
 <div class="tile-journal-overlay" id="tileJournalOverlay">
@@ -2547,6 +2847,20 @@ document.getElementById('planOverlay').addEventListener('click', e => {
 });
 
 
+
+
+// ── GUIDE ─────────────────────────────────────────────────────────────────────
+function openGuide() {
+  document.getElementById('guideOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeGuide() {
+  document.getElementById('guideOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('guideOverlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('guideOverlay')) closeGuide();
+});
 
 // ── TILE JOURNAL PROMPT ───────────────────────────────────────────────────────
 
