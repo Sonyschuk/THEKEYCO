@@ -1003,6 +1003,214 @@
     .plan-row { gap: 8px; }
   }
 
+
+  /* My Activities tags in plan modal */
+  .plan-my-activities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .my-act-tag {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--teal-wash);
+    border: 1.5px solid var(--teal-pale);
+    border-radius: 20px;
+    padding: 4px 10px 4px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--teal);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    max-width: 100%;
+  }
+  .my-act-tag:hover { background: #dff0ed; border-color: var(--teal-light); }
+  .my-act-tag.selected { background: var(--teal); color: var(--bg); border-color: var(--teal); }
+  .my-act-tag-text { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .my-act-tag-del {
+    flex-shrink: 0;
+    font-size: 13px;
+    line-height: 1;
+    opacity: 0.5;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 2px;
+  }
+  .my-act-tag-del:hover { opacity: 1; }
+  .plan-my-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 5px;
+  }
+  .plan-my-empty {
+    font-size: 11px;
+    font-style: italic;
+    color: var(--text-soft);
+    margin-bottom: 8px;
+  }
+
+
+  /* Journal prompt in plan rows */
+  .plan-journal-wrap {
+    margin-top: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .plan-journal-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    cursor: pointer;
+    padding-top: 8px;
+  }
+  .plan-journal-toggle input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--teal);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 0;
+  }
+  .plan-journal-toggle-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-soft);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .plan-journal-input {
+    flex: 1;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 10px;
+    outline: none;
+    transition: border-color 0.2s, opacity 0.2s;
+    resize: none;
+    min-height: 36px;
+    line-height: 1.4;
+  }
+  .plan-journal-input::placeholder { color: var(--text-soft); font-style: italic; }
+  .plan-journal-input:focus { border-color: var(--teal-light); }
+  .plan-journal-input:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  /* Tile journal prompt modal */
+  .tile-journal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(247,243,238,0.92);
+    backdrop-filter: blur(10px);
+    z-index: 280;
+    display: flex;
+    align-items: flex-end;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .tile-journal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .tile-journal-sheet {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px 24px 0 0;
+    padding: 28px 24px 36px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    transform: translateY(40px);
+    transition: transform 0.35s ease;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  .tile-journal-overlay.open .tile-journal-sheet {
+    transform: translateY(0);
+  }
+  .tile-journal-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+  .tile-journal-activity {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-soft);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .tile-journal-prompt {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--teal);
+    line-height: 1.4;
+  }
+  .tile-journal-close {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--text-mid);
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+    line-height: 1;
+  }
+  .tile-journal-textarea {
+    width: 100%;
+    min-height: 120px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-top: 16px;
+  }
+  .tile-journal-textarea:focus { border-color: var(--teal-light); }
+  .tile-journal-textarea::placeholder { color: var(--text-soft); font-style: italic; }
+  .tile-journal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 14px;
+  }
+  .tile-journal-skip {
+    font-size: 12px;
+    color: var(--text-soft);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    padding: 8px 4px;
+    font-weight: 500;
+  }
+  .tile-journal-skip:hover { color: var(--text-mid); }
+
   /* ── RESPONSIVE ─────────────────────────────────────────────────────────── */
 
   /* Tablet (max 768px) */
@@ -1262,6 +1470,25 @@
 
 </main>
 
+
+
+<!-- TILE JOURNAL PROMPT OVERLAY -->
+<div class="tile-journal-overlay" id="tileJournalOverlay">
+  <div class="tile-journal-sheet">
+    <div class="tile-journal-top">
+      <div>
+        <div class="tile-journal-activity" id="tjActivity"></div>
+        <div class="tile-journal-prompt" id="tjPrompt"></div>
+      </div>
+      <button class="tile-journal-close" onclick="closeTileJournal(true)">✕</button>
+    </div>
+    <textarea class="tile-journal-textarea" id="tjTextarea" placeholder="Write freely — this moment is worth capturing..."></textarea>
+    <div class="tile-journal-actions">
+      <button class="tile-journal-skip" onclick="closeTileJournal(false)">Skip for now</button>
+      <button class="btn btn-plan" onclick="saveTileJournal()" style="font-size:11px;padding:8px 18px;">Save reflection ✓</button>
+    </div>
+  </div>
+</div>
 
 <!-- PLAN MY MONTH MODAL -->
 <div class="plan-overlay" id="planOverlay">
@@ -1585,13 +1812,18 @@ function renderGrid() {
           if (editMode) return;
           const wasComplete = state.tiles[idx].progress >= state.tiles[idx].target;
           if (wasComplete) {
-            // Already done — one more tap resets so you can correct a mistake
             state.tiles[idx].progress = 0;
           } else {
             state.tiles[idx].progress++;
             updateActivity();
             const nowComplete = state.tiles[idx].progress >= state.tiles[idx].target;
-            if (nowComplete) celebrate(tile.text);
+            if (nowComplete) {
+              celebrate(tile.text);
+              // If this tile has a journal prompt, open it
+              if (tile.prompt) {
+                setTimeout(() => openTileJournal(tile.text, tile.prompt, tile.pillar), 600);
+              }
+            }
           }
           saveState();
           renderGrid();
@@ -1992,7 +2224,56 @@ function renderPlanBody() {
     desc.textContent = PILLAR_DESCRIPTIONS[pi];
     section.appendChild(desc);
 
-    // 5 rows — use existing tiles for this pillar, pad with blanks
+    // ── MY ACTIVITIES for this pillar ──────────────────────────────────────
+    const myLib = loadMyActivities();
+    const myActs = (myLib[pi] || []);
+
+    const myLabel = document.createElement('div');
+    myLabel.className = 'plan-my-label';
+    myLabel.textContent = 'My Saved Activities';
+    section.appendChild(myLabel);
+
+    const myTagsWrap = document.createElement('div');
+    myTagsWrap.className = 'plan-my-activities';
+    myTagsWrap.id = `myTags-${pi}`;
+
+    function rebuildMyTags() {
+      myTagsWrap.innerHTML = '';
+      const currentLib = loadMyActivities();
+      const acts = currentLib[pi] || [];
+      if (acts.length === 0) {
+        const empty = document.createElement('div');
+        empty.className = 'plan-my-empty';
+        empty.textContent = 'Activities you create will appear here next month.';
+        myTagsWrap.appendChild(empty);
+        return;
+      }
+      acts.forEach(act => {
+        const tag = document.createElement('div');
+        tag.className = 'my-act-tag';
+        tag.dataset.text = act;
+        // We'll use a generic pillar/row approach — clicking selects for active row
+        const tagText = document.createElement('span');
+        tagText.className = 'my-act-tag-text';
+        tagText.textContent = act;
+        const delBtn = document.createElement('button');
+        delBtn.className = 'my-act-tag-del';
+        delBtn.textContent = '×';
+        delBtn.title = 'Remove from my list';
+        delBtn.addEventListener('click', e => {
+          e.stopPropagation();
+          removeMyActivity(pi, act);
+          rebuildMyTags();
+        });
+        tag.appendChild(tagText);
+        tag.appendChild(delBtn);
+        myTagsWrap.appendChild(tag);
+      });
+    }
+    rebuildMyTags();
+    section.appendChild(myTagsWrap);
+
+    // ── 5 ROWS ─────────────────────────────────────────────────────────────
     const existingTiles = byPillar[pi];
     for (let row = 0; row < 5; row++) {
       const existing = existingTiles[row] || null;
@@ -2008,26 +2289,43 @@ function renderPlanBody() {
       rowNum.textContent = `Activity ${row + 1}`;
       inner.appendChild(rowNum);
 
-      // Dropdown (activity library for this pillar)
+      // Dropdown
       const sel = document.createElement('select');
       sel.className = 'plan-activity-select';
       sel.dataset.pillar = pi;
       sel.dataset.row = row;
       sel.style.borderColor = PILLAR_BD_HEX[pi];
 
-      // Default option
       const defOpt = document.createElement('option');
       defOpt.value = '';
       defOpt.textContent = '— Choose an activity or type your own below —';
       sel.appendChild(defOpt);
 
+      // My saved activities group
+      const myLibNow = loadMyActivities();
+      const myActsNow = myLibNow[pi] || [];
+      if (myActsNow.length > 0) {
+        const grpMine = document.createElement('optgroup');
+        grpMine.label = '★ My Saved Activities';
+        myActsNow.forEach(act => {
+          const opt = document.createElement('option');
+          opt.value = act; opt.textContent = act;
+          if (existing && existing.tile.text === act) opt.selected = true;
+          grpMine.appendChild(opt);
+        });
+        sel.appendChild(grpMine);
+      }
+
+      // Curated library group
+      const grpCurated = document.createElement('optgroup');
+      grpCurated.label = '🗝 Key Co. Activities';
       ACTIVITY_LIBRARY[pi].forEach(act => {
         const opt = document.createElement('option');
-        opt.value = act;
-        opt.textContent = act;
+        opt.value = act; opt.textContent = act;
         if (existing && existing.tile.text === act) opt.selected = true;
-        sel.appendChild(opt);
+        grpCurated.appendChild(opt);
       });
+      sel.appendChild(grpCurated);
 
       // Custom option
       const customOpt = document.createElement('option');
@@ -2037,20 +2335,20 @@ function renderPlanBody() {
 
       inner.appendChild(sel);
 
-      // Custom text input (hidden until "Write my own" selected)
+      // Custom text input
       const customInput = document.createElement('input');
       customInput.type = 'text';
       customInput.className = 'plan-activity-input';
-      customInput.placeholder = 'Describe your own activity...';
+      customInput.placeholder = "Describe your own activity — saved to your list for next month...";
       customInput.dataset.pillar = pi;
       customInput.dataset.row = row;
       customInput.style.display = 'none';
 
-      // If existing tile has text not in library, show custom input
-      if (existing && !ACTIVITY_LIBRARY[pi].includes(existing.tile.text) && existing.tile.text) {
+      // Pre-fill if existing tile text isn't in either library
+      const allKnown = [...ACTIVITY_LIBRARY[pi], ...(myLibNow[pi] || [])];
+      if (existing && !allKnown.includes(existing.tile.text) && existing.tile.text) {
         customInput.value = existing.tile.text;
         customInput.style.display = 'block';
-        // Select "custom" in dropdown
         customOpt.selected = true;
       }
 
@@ -2065,6 +2363,45 @@ function renderPlanBody() {
       });
 
       inner.appendChild(customInput);
+
+      // Journal prompt field
+      const journalWrap = document.createElement('div');
+      journalWrap.className = 'plan-journal-wrap';
+
+      const journalToggle = document.createElement('label');
+      journalToggle.className = 'plan-journal-toggle';
+      const journalChk = document.createElement('input');
+      journalChk.type = 'checkbox';
+      journalChk.dataset.pillar = pi;
+      journalChk.dataset.row = row;
+      journalChk.className = 'plan-journal-chk';
+      if (existing && existing.tile.prompt) journalChk.checked = true;
+      const journalToggleLabel = document.createElement('span');
+      journalToggleLabel.className = 'plan-journal-toggle-label';
+      journalToggleLabel.textContent = 'Journal';
+      journalToggle.appendChild(journalChk);
+      journalToggle.appendChild(journalToggleLabel);
+
+      const journalInput = document.createElement('textarea');
+      journalInput.className = 'plan-journal-input';
+      journalInput.rows = 2;
+      journalInput.dataset.pillar = pi;
+      journalInput.dataset.row = row;
+      journalInput.className = 'plan-journal-input plan-journal-field';
+      journalInput.placeholder = 'Write the reflection prompt for this activity...';
+      journalInput.disabled = !journalChk.checked;
+      if (existing && existing.tile.prompt) journalInput.value = existing.tile.prompt;
+
+      journalChk.addEventListener('change', () => {
+        journalInput.disabled = !journalChk.checked;
+        if (journalChk.checked) journalInput.focus();
+        else journalInput.value = '';
+      });
+
+      journalWrap.appendChild(journalToggle);
+      journalWrap.appendChild(journalInput);
+      inner.appendChild(journalWrap);
+
       rowEl.appendChild(inner);
 
       // Times selector
@@ -2097,9 +2434,41 @@ function renderPlanBody() {
   });
 }
 
+// ── MY ACTIVITIES LIBRARY (persists across months) ───────────────────────────
+
+function loadMyActivities() {
+  try {
+    const raw = localStorage.getItem('thekey_my_activities');
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return [[], [], [], []]; // one array per pillar
+}
+
+function saveMyActivities(lib) {
+  localStorage.setItem('thekey_my_activities', JSON.stringify(lib));
+}
+
+function addMyActivity(pi, text) {
+  const lib = loadMyActivities();
+  if (!lib[pi]) lib[pi] = [];
+  // avoid duplicates
+  if (!lib[pi].includes(text)) {
+    lib[pi].unshift(text); // add to top
+    saveMyActivities(lib);
+  }
+}
+
+function removeMyActivity(pi, text) {
+  const lib = loadMyActivities();
+  if (!lib[pi]) return;
+  lib[pi] = lib[pi].filter(a => a !== text);
+  saveMyActivities(lib);
+}
+
+// ── PLAN MONTH SAVE ───────────────────────────────────────────────────────────
+
 function savePlanMonth() {
-  // Read all 4 pillars × 5 rows from the plan UI
-  const planned = [[], [], [], []]; // planned[pillar] = [{text, target}]
+  const planned = [[], [], [], []];
 
   for (let pi = 0; pi < 4; pi++) {
     for (let row = 0; row < 5; row++) {
@@ -2108,35 +2477,45 @@ function savePlanMonth() {
       const timesSel = document.querySelector(`.plan-times-select[data-pillar="${pi}"][data-row="${row}"]`);
 
       let text = '';
-      if (sel.value === '__custom__') {
-        text = customInput.value.trim();
-      } else if (sel.value) {
+      if (sel && sel.value === '__custom__') {
+        text = customInput ? customInput.value.trim() : '';
+      } else if (sel && sel.value && sel.value !== '') {
         text = sel.value;
       }
 
-      const target = parseInt(timesSel.value) || 3;
-      planned[pi].push({ text, target });
+      // If it came from "My Activities" tag selection, read from data attr
+      const tagSel = document.querySelector(`.my-act-tag.selected[data-pillar="${pi}"][data-row="${row}"]`);
+      if (tagSel) text = tagSel.dataset.text;
+
+      const target = parseInt(timesSel ? timesSel.value : 3) || 3;
+      const journalChk = document.querySelector(`.plan-journal-chk[data-pillar="${pi}"][data-row="${row}"]`);
+      const journalField = document.querySelector(`.plan-journal-field[data-pillar="${pi}"][data-row="${row}"]`);
+      const prompt = (journalChk && journalChk.checked && journalField) ? journalField.value.trim() : '';
+      planned[pi].push({ text, target, prompt });
+
+      // Save any custom activities to the personal library
+      if (text && !ACTIVITY_LIBRARY[pi].includes(text)) {
+        addMyActivity(pi, text);
+      }
     }
   }
 
-  // Now write back to state.tiles
-  // Group current tiles by pillar (excl free), maintain order
+  // Write back to state.tiles, grouped by pillar
   const byPillar = [[], [], [], []];
   state.tiles.forEach((tile, idx) => {
     if (tile.free || tile.pillar < 0) return;
-    if (tile.pillar >= 0 && tile.pillar <= 3) {
-      byPillar[tile.pillar].push(idx);
-    }
+    if (tile.pillar >= 0 && tile.pillar <= 3) byPillar[tile.pillar].push(idx);
   });
 
   for (let pi = 0; pi < 4; pi++) {
-    const slots = byPillar[pi]; // tile indices for this pillar
+    const slots = byPillar[pi];
     planned[pi].forEach((plan, row) => {
       if (row < slots.length && plan.text) {
         const tileIdx = slots[row];
         state.tiles[tileIdx].text = plan.text;
         state.tiles[tileIdx].target = plan.target;
-        state.tiles[tileIdx].progress = 0; // reset progress for new month plan
+        state.tiles[tileIdx].progress = 0;
+        state.tiles[tileIdx].prompt = plan.prompt || '';
       }
     });
   }
@@ -2146,7 +2525,6 @@ function savePlanMonth() {
   updateStats();
   closePlanMonth();
 
-  // Brief celebration
   const el = document.getElementById('celebration');
   const msg = document.getElementById('celebMsg');
   msg.textContent = '🗝 Board planned!';
@@ -2159,6 +2537,50 @@ document.getElementById('planOverlay').addEventListener('click', e => {
   if (e.target === document.getElementById('planOverlay')) closePlanMonth();
 });
 
+
+
+// ── TILE JOURNAL PROMPT ───────────────────────────────────────────────────────
+
+let _tjPillar = -1;
+
+function openTileJournal(activityText, prompt, pillar) {
+  _tjPillar = pillar;
+  document.getElementById('tjActivity').textContent = activityText;
+  document.getElementById('tjPrompt').textContent = prompt;
+  document.getElementById('tjTextarea').value = '';
+  document.getElementById('tileJournalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('tjTextarea').focus(), 400);
+}
+
+function closeTileJournal(skipped) {
+  document.getElementById('tileJournalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function saveTileJournal() {
+  const text = document.getElementById('tjTextarea').value.trim();
+  const prompt = document.getElementById('tjPrompt').textContent;
+  const activity = document.getElementById('tjActivity').textContent;
+  if (text) {
+    if (!state.entries) state.entries = [];
+    state.entries.unshift({
+      date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+      prompt: prompt,
+      text,
+      pillar: _tjPillar,
+      activity,
+    });
+    saveState();
+    updateStats();
+  }
+  closeTileJournal(false);
+}
+
+// Close on background tap
+document.getElementById('tileJournalOverlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('tileJournalOverlay')) closeTileJournal(true);
+});
 
 // ── SERVICE WORKER ────────────────────────────────────────────────────────────
 if ('serviceWorker' in navigator) {
