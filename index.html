@@ -154,8 +154,8 @@
 
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 6vw, 58px);
-    font-weight: 600;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 500;
     color: var(--text);
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -167,8 +167,8 @@
   }
 
   .hero-sub {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 400;
     color: var(--text-mid);
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -217,8 +217,8 @@
   .btn {
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-weight: 500;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     padding: 9px 18px;
     border-radius: 24px;
@@ -230,7 +230,7 @@
   .btn-ghost {
     background: transparent;
     color: var(--text);
-    border: 1.5px solid var(--border);
+    border: 1px solid var(--border);
   }
 
   .btn-ghost:hover {
@@ -266,9 +266,9 @@
   }
 
   .pillar-tab {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     padding: 7px 15px;
     border-radius: 16px;
@@ -367,7 +367,7 @@
 
   .tile-text {
     font-size: clamp(9.5px, 1.5vw, 12.5px);
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text);
     line-height: 1.3;
     position: relative;
@@ -665,7 +665,7 @@
 
   .streak-label {
     font-size: 10px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text);
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -984,9 +984,9 @@
   .btn-plan {
     background: var(--teal);
     color: var(--bg);
-    font-weight: 700;
+    font-weight: 500;
     font-size: 12px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     padding: 9px 20px;
     border-radius: 24px;
@@ -1441,17 +1441,17 @@
 
     /* Hero */
     .hero { margin-bottom: 24px; }
-    .hero-title { font-size: clamp(24px, 8vw, 34px); }
+    .hero-title { font-size: clamp(22px, 7vw, 30px); font-weight: 400; }
     .hero-sub { font-size: 11px; letter-spacing: 0.12em; }
     .progress-bar-wrap { max-width: 100%; }
 
     /* View tabs */
     .view-tabs { width: 100%; }
-    .view-tab { flex: 1; text-align: center; font-size: 11px; padding: 8px 12px; }
+    .view-tab { flex: 1; text-align: center; font-size: 11px; font-weight: 500; padding: 7px 10px; }
 
     /* Controls */
     .controls { gap: 5px; }
-    .btn { font-size: 10px; padding: 7px 11px; letter-spacing: 0.06em; }
+    .btn { font-size: 10px; font-weight: 500; padding: 6px 10px; letter-spacing: 0.04em; }
 
     /* Pillar tabs — scrollable row on mobile */
     .pillar-tabs {
@@ -1464,13 +1464,13 @@
       scrollbar-width: none;
     }
     .pillar-tabs::-webkit-scrollbar { display: none; }
-    .pillar-tab { white-space: nowrap; font-size: 10px; padding: 5px 11px; flex-shrink: 0; }
+    .pillar-tab { white-space: nowrap; font-size: 10px; font-weight: 500; padding: 5px 10px; flex-shrink: 0; }
 
     /* Streak row */
     .streak-row { gap: 8px; }
     .streak-card { min-width: 0; flex: 1; padding: 10px 8px; }
     .streak-num { font-size: 26px; }
-    .streak-label { font-size: 9px; letter-spacing: 0.08em; }
+    .streak-label { font-size: 9px; font-weight: 500; letter-spacing: 0.06em; }
 
     /* Grid — bigger touch targets */
     .bingo-grid { gap: 5px; }
@@ -1480,7 +1480,7 @@
       min-height: 52px;
       min-width: 0;
     }
-    .tile-text { font-size: clamp(8px, 3vw, 11px); font-weight: 600; line-height: 1.25; }
+    .tile-text { font-size: clamp(7.5px, 2.8vw, 10.5px); font-weight: 500; line-height: 1.2; }
     .dot { width: 5px; height: 5px; }
     .tile-dots { gap: 2px; margin-top: 4px; }
     .tile-check { font-size: 10px; top: 4px; right: 5px; }
@@ -1524,7 +1524,7 @@
   @media (max-width: 360px) {
     .bingo-grid { gap: 4px; }
     .tile { min-height: 50px; padding: 4px 3px; }
-    .tile-text { font-size: clamp(7px, 2.8vw, 10px); font-weight: 600; }
+    .tile-text { font-size: clamp(6.5px, 2.6vw, 9.5px); font-weight: 500; }
     .btn { font-size: 9px; padding: 6px 9px; }
   }
 
@@ -1544,8 +1544,8 @@
 
   .view-tab {
     font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     padding: 8px 20px;
     border-radius: 20px;
@@ -1610,7 +1610,7 @@
       <button class="btn btn-plan" onclick="openPlanMonth()">🗝 Plan My Month</button>
       <button class="btn btn-ghost" id="editBtn" onclick="toggleEdit()">✏️ Edit Board</button>
       <button class="btn btn-ghost" onclick="resetMonth()">↺ Reset Month</button>
-      <button class="btn btn-ghost" onclick="exportData()">Export</button>
+      <button class="btn btn-ghost" onclick="exportData()">🔗 Share Board</button>
       <button class="btn btn-ghost" onclick="openImport()">Import</button>
     </div>
 
@@ -1808,6 +1808,28 @@
   <div class="plan-footer">
     <button class="btn btn-ghost" onclick="closePlanMonth()">Cancel</button>
     <button class="btn btn-plan" onclick="savePlanMonth()">Save & Close ✓</button>
+  </div>
+</div>
+
+<!-- SHARE MODAL -->
+<div class="modal-overlay" id="shareModal">
+  <div class="modal" style="background:var(--bg-card);">
+    <button class="modal-close" onclick="closeShareModal()">✕</button>
+    <div class="modal-title" style="color:var(--teal);font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;">Share Your Board</div>
+    <div class="modal-subtitle" style="color:var(--text-soft);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Transfer to another device</div>
+    <p style="font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:16px;font-family:'Cormorant Garamath',serif;">
+      Copy the link below and open it on your phone or any other device. Your board data will load automatically.
+    </p>
+    <div style="position:relative;">
+      <textarea id="shareUrl" readonly style="width:100%;min-height:72px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--text);background:var(--bg);border:1.5px solid var(--teal-pale);border-radius:10px;padding:10px 12px;resize:none;outline:none;line-height:1.5;"></textarea>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end;flex-wrap:wrap;">
+      <button class="btn btn-ghost" onclick="closeShareModal()">Close</button>
+      <button class="btn btn-gold" onclick="copyShareUrl()" id="copyShareBtn">Copy Link</button>
+    </div>
+    <p style="font-size:11px;color:var(--text-soft);margin-top:12px;font-style:italic;">
+      ℹ️ This link contains your board data. Anyone with the link can load your board.
+    </p>
   </div>
 </div>
 
@@ -2277,8 +2299,66 @@ function closeEntryModal() {
 // ── EXPORT / IMPORT ───────────────────────────────────────────────────────────
 
 function exportData() {
-  const data = btoa(JSON.stringify(state));
-  navigator.clipboard.writeText(data).then(() => alert('Copied to clipboard! Paste it somewhere safe.'));
+  const data = btoa(unescape(encodeURIComponent(JSON.stringify(state))));
+  const baseUrl = window.location.href.split('?')[0].split('#')[0];
+  const shareUrl = baseUrl + '?board=' + data;
+  document.getElementById('shareUrl').value = shareUrl;
+  document.getElementById('copyShareBtn').textContent = 'Copy Link';
+  document.getElementById('shareModal').classList.add('open');
+}
+
+function copyShareUrl() {
+  const url = document.getElementById('shareUrl').value;
+  // Try modern clipboard API first
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(() => {
+      document.getElementById('copyShareBtn').textContent = '✓ Copied!';
+      setTimeout(() => document.getElementById('copyShareBtn').textContent = 'Copy Link', 2500);
+    }).catch(() => fallbackCopy(url));
+  } else {
+    fallbackCopy(url);
+  }
+}
+
+function fallbackCopy(text) {
+  const ta = document.getElementById('shareUrl');
+  ta.select();
+  ta.setSelectionRange(0, 99999);
+  try {
+    document.execCommand('copy');
+    document.getElementById('copyShareBtn').textContent = '✓ Copied!';
+    setTimeout(() => document.getElementById('copyShareBtn').textContent = 'Copy Link', 2500);
+  } catch(e) {
+    alert('Please manually copy the link above.');
+  }
+}
+
+function closeShareModal() {
+  document.getElementById('shareModal').classList.remove('open');
+}
+
+function checkUrlImport() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const boardData = params.get('board');
+    if (!boardData) return;
+    const imported = JSON.parse(decodeURIComponent(escape(atob(boardData))));
+    if (!imported || !imported.tiles) return;
+    // Ask user to confirm before overwriting
+    const mn = MONTH_NAMES[activeMonth.month] + ' ' + activeMonth.year;
+    if (confirm('A shared board was found. Load it for ' + mn + '? This will replace your current board for this month.')) {
+      state = imported;
+      saveState();
+      renderGrid();
+      renderEntries();
+      updateStats();
+      updateStreak();
+    }
+    // Clean URL so reload doesn't re-trigger
+    window.history.replaceState({}, document.title, window.location.pathname);
+  } catch(e) {
+    console.log('URL import error:', e);
+  }
 }
 
 function openImport() {
@@ -2320,6 +2400,9 @@ function celebrate(tileText) {
 
 document.getElementById('importModal').addEventListener('click', e => {
   if (e.target === document.getElementById('importModal')) closeModal();
+});
+document.getElementById('shareModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('shareModal')) closeShareModal();
 });
 document.getElementById('entryModal').addEventListener('click', e => {
   if (e.target === document.getElementById('entryModal')) closeEntryModal();
