@@ -1610,7 +1610,7 @@
       <button class="btn btn-plan" onclick="openPlanMonth()">🗝 Plan My Month</button>
       <button class="btn btn-ghost" id="editBtn" onclick="toggleEdit()">✏️ Edit Board</button>
       <button class="btn btn-ghost" onclick="resetMonth()">↺ Reset Month</button>
-      <button class="btn btn-ghost" onclick="exportData()">🔗 Share Board</button>
+      <button class="btn btn-ghost" onclick="exportData()">&#8645; Export</button>
       <button class="btn btn-ghost" onclick="openImport()">Import</button>
     </div>
 
@@ -1811,25 +1811,22 @@
   </div>
 </div>
 
-<!-- SHARE MODAL -->
+<!-- EXPORT MODAL -->
 <div class="modal-overlay" id="shareModal">
   <div class="modal" style="background:var(--bg-card);">
     <button class="modal-close" onclick="closeShareModal()">✕</button>
-    <div class="modal-title" style="color:var(--teal);font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;">Share Your Board</div>
+    <div class="modal-title" style="color:var(--teal);font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;">Export Your Board</div>
     <div class="modal-subtitle" style="color:var(--text-soft);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Transfer to another device</div>
-    <p style="font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:16px;font-family:'Cormorant Garamath',serif;">
-      Copy the link below and open it on your phone or any other device. Your board data will load automatically.
+    <p style="font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:14px;">
+      1. Tap <strong>Copy Code</strong> below.<br>
+      2. Paste it into a text message or note and send it to yourself.<br>
+      3. On your phone, open the app, tap <strong>Import</strong>, paste the code and tap Import.
     </p>
-    <div style="position:relative;">
-      <textarea id="shareUrl" readonly style="width:100%;min-height:72px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--text);background:var(--bg);border:1.5px solid var(--teal-pale);border-radius:10px;padding:10px 12px;resize:none;outline:none;line-height:1.5;"></textarea>
-    </div>
+    <textarea id="shareUrl" readonly style="width:100%;min-height:80px;font-family:'DM Sans',sans-serif;font-size:10px;color:var(--text);background:var(--bg);border:1.5px solid var(--teal-pale);border-radius:10px;padding:10px 12px;resize:none;outline:none;line-height:1.5;word-break:break-all;"></textarea>
     <div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end;flex-wrap:wrap;">
       <button class="btn btn-ghost" onclick="closeShareModal()">Close</button>
-      <button class="btn btn-gold" onclick="copyShareUrl()" id="copyShareBtn">Copy Link</button>
+      <button class="btn btn-gold" onclick="copyShareUrl()" id="copyShareBtn">Copy Code</button>
     </div>
-    <p style="font-size:11px;color:var(--text-soft);margin-top:12px;font-style:italic;">
-      ℹ️ This link contains your board data. Anyone with the link can load your board.
-    </p>
   </div>
 </div>
 
@@ -1837,9 +1834,10 @@
 <div class="modal-overlay" id="importModal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-title">Import Board</div>
-    <div class="modal-subtitle">Paste your exported data below</div>
-    <textarea class="journal-textarea" id="importInput" placeholder="Paste export code here…" style="min-height:120px;"></textarea>
+    <div class="modal-title" style="color:var(--teal);font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;">Import Board</div>
+    <div class="modal-subtitle" style="color:var(--text-soft);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Paste your export code below</div>
+    <p style="font-size:13px;color:var(--text-mid);line-height:1.6;margin-bottom:12px;">Paste the code you copied from Export on your other device, then tap Import.</p>
+    <textarea class="journal-textarea" id="importInput" placeholder="Paste export code here…" style="min-height:100px;font-size:11px;word-break:break-all;"></textarea>
     <div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end;">
       <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
       <button class="btn btn-gold" onclick="importData()">Import</button>
@@ -2300,10 +2298,8 @@ function closeEntryModal() {
 
 function exportData() {
   const data = btoa(unescape(encodeURIComponent(JSON.stringify(state))));
-  const baseUrl = window.location.href.split('?')[0].split('#')[0];
-  const shareUrl = baseUrl + '?board=' + data;
-  document.getElementById('shareUrl').value = shareUrl;
-  document.getElementById('copyShareBtn').textContent = 'Copy Link';
+  document.getElementById('shareUrl').value = data;
+  document.getElementById('copyShareBtn').textContent = 'Copy Code';
   document.getElementById('shareModal').classList.add('open');
 }
 
